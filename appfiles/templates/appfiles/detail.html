@@ -1,0 +1,21 @@
+{% extends "appfiles/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2  class="mr-2" >{{ object.author }}</h2>
+
+                <p class="mr-2">Дата создания: {{ object.time_create }}</p>
+                <p class="mr-2">Дата обновления: {{ object.time_update }}</p>
+        {% if object.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update' object.id %}">Редактировать</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete' object.id %}">Удалить</a>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">название: {{ object.title }}</h2>
+       <h2 class="article-title">лог: {{ object.checked_text }}</h2>
+    </div>
+  </article>
+{% endblock content %}

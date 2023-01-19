@@ -1,0 +1,36 @@
+﻿{% extends "appfiles/base.html" %}
+{% block content %}
+
+    {% for file in files %}
+        <article class="media content-section">
+
+          <div class="media-body">
+
+            <div class="article-metadata">
+
+                <p class="mr-2">Дата создания: {{ file.time_create }}</p>
+                <p class="mr-2">Дата обновления: {{ file.time_update }}</p>
+
+
+            </div>
+
+             <p class="article-title">название: {{ file.title }}</p>
+
+                    {% if file.checked %}
+                     <p class="article-title">статус: проверено</p>
+                     {% else %}
+                     <p class="article-title">статус: не проверено</p>
+                    {% endif %}
+
+                  <div>
+                      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'detail' file.id %}">Подробнее</a>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update' file.id %}">Редактировать</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete' file.id %}">Удалить</a>
+                  </div>
+
+          </div>
+
+        </article>
+    {% endfor %}
+
+{% endblock content %}
