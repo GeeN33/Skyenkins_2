@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from appfiles.forms import FilesForm
 from appfiles.models import Files
-from appfiles.tasks import send_email
+from appfiles.tasks import send_email, checked_files
 from users.models import User
 
 class FileListView(LoginRequiredMixin, ListView):
@@ -75,5 +75,5 @@ def model_form_upload(request):
     })
 
 def about(request):
-    send_email.delay()
+    checked_files.delay()
     return render(request, 'appfiles/about.html', {'title': 'Python-разработчик (ISA)'})
