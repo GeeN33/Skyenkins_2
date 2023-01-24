@@ -81,8 +81,13 @@ WSGI_APPLICATION = 'Skyenkins_2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgresdb',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '45.95.234.227',
+        # 'HOST': 'pgdb',
+        'PORT': '5432',
     }
 }
 
@@ -141,6 +146,8 @@ LOGIN_REDIRECT_URL =  '/list'
 
 CELERY_BEAT_SCHEDULER='django_celery_beat.schedulers:DatabaseScheduler'
 
+# CELERY_BROKER_URL = "redis://redis:6379/0"
+# CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 CELERY_BROKER_URL = "redis://45.95.234.227:6379/0"
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_ACCEPT_CONTENT = ['application/json']

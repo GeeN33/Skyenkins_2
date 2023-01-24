@@ -75,5 +75,6 @@ def model_form_upload(request):
     })
 
 def about(request):
-    checked_files.delay()
+    # checked_files.delay()
+    # checked_files()
     return render(request, 'appfiles/about.html', {'title': 'Python-разработчик (ISA)'})

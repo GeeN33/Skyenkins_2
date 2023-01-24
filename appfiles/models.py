@@ -17,3 +17,18 @@ class Files(models.Model):
     class Meta:
         verbose_name = "Файл"
         verbose_name_plural = "Файлы"
+
+class Logs(models.Model):
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', blank=False, null=True)
+    files = models.ForeignKey(Files, on_delete=models.CASCADE, verbose_name='Файлы', blank=False, null=True)
+    time_create = models.DateTimeField(auto_now_add=True)
+    time_update = models.DateTimeField(auto_now=True)
+    log_text = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return "log"
+
+    class Meta:
+        verbose_name = "log"
+        verbose_name_plural = "logs"
